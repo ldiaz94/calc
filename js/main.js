@@ -2,12 +2,15 @@ var display = document.getElementById("display");
 var displayBuffer = "";
 var computationBuffer = "";
 
+function updateDisplay(){
+    display.innerHTML = displayBuffer;
+}
 
 function input(value) {
     if (displayBuffer.length < 12) {
         displayBuffer += value;
     }
-    display.innerHTML = displayBuffer;
+    updateDisplay();
     console.log(parseFloat(displayBuffer));
 }
 
@@ -16,10 +19,10 @@ function clearFunc(flag) {
         computationBuffer = "";
     }
     displayBuffer = "";
-    display.innerHTML = displayBuffer;
+    updateDisplay();
 }
 
 function erase(){
     displayBuffer = displayBuffer.slice(0,-1);
-    display.innerHTML = displayBuffer;
+    updateDisplay();
 }
