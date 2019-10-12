@@ -7,7 +7,10 @@ function updateDisplay(){
 }
 
 function input(value) {
-    if (displayBuffer.length < 12) {
+    if (isNaN(value) && value != ".") {
+        computationBuffer += displayBuffer + value;
+        displayBuffer = "";
+    } else if (displayBuffer.length < 12) {
         displayBuffer += value;
     }
     updateDisplay();
@@ -24,5 +27,11 @@ function clearFunc(flag) {
 
 function erase(){
     displayBuffer = displayBuffer.slice(0,-1);
+    updateDisplay();
+}
+
+function compute(){
+    computationBuffer += displayBuffer;
+    displayBuffer = computationBuffer;
     updateDisplay();
 }
