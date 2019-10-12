@@ -10,7 +10,7 @@
 <body>
     <table class="calc">
         <tr>
-            <th colspan="4"></th>
+            <th id="display" colspan="4"></th>
         </tr>
         <tr>
             <td>CE</td>
@@ -19,29 +19,32 @@
             <td>/</td>
         </tr>
         <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
+            <td onclick="input(7)">7</td>
+            <td onclick="input(8)">8</td>
+            <td onclick="input(9)">9</td>
             <td>X</td>
         </tr>
         <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
+            <td onclick="input(4)">4</td>
+            <td onclick="input(5)">5</td>
+            <td onclick="input(6)">6</td>
             <td>-</td>
         </tr>
         <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+            <td onclick="input(1)">1</td>
+            <td onclick="input(2)">2</td>
+            <td onclick="input(3)">3</td>
             <td>+</td>
         </tr>
         <tr>
             <td>+\-</td>
-            <td>0</td>
-            <td>.</td>
+            <td onclick="input(0)">0</td>
+            <td onclick="input('.')">.</td>
             <td>=</td>
         </tr>
     </table>
 </body>
+<footer>
+    <script src="js/main.js"></script>
+</footer>
 </html>
