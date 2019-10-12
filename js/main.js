@@ -18,3 +18,8 @@ function clearFunc(flag) {
     displayBuffer = "";
     display.innerHTML = displayBuffer;
 }
+
+function erase(){
+    displayBuffer = displayBuffer.slice(0,-1);
+    display.innerHTML = displayBuffer;
+}
