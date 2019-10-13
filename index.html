@@ -10,7 +10,12 @@
 <body>
     <table class="calc">
         <tr>
-            <th id="display" colspan="4"></th>
+            <th colspan="4">
+                <div class="screen">
+                    <div id="buffer"></div>
+                    <div id="display"></div>
+                </div>
+            </th>
         </tr>
         <tr>
             <td onclick="clearFunc(0)">CE</td>
@@ -37,7 +42,7 @@
             <td onclick="input('+')">+</td>
         </tr>
         <tr>
-            <td>+\-</td>
+            <td class="empty"></td>
             <td onclick="input(0)">0</td>
             <td onclick="input('.')">.</td>
             <td onclick="compute()">=</td>

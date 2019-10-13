@@ -1,14 +1,20 @@
 var display = document.getElementById("display");
-var displayBuffer = "";
+var bufferDisplay = document.getElementById("buffer"); // Name can get confusing
+var displayBuffer = ""; // Ditto
 var computationBuffer = "";
 var result = "";
-var OPERANDS = ["/", "x", "+", "-"];
+var OPERANDS = ["/", "x", "-", "+"];
 
-function updateDisplay(message){
-    if (message) {
+function updateDisplay(message, comp){
+    if (message && comp) {
         display.innerHTML = message;
+        bufferDisplay.innerHTML = comp;
+    } else if (message) {
+        display.innerHTML = message;
+        bufferDisplay.innerHTML = "";
     } else {
         display.innerHTML = displayBuffer;
+        bufferDisplay.innerHTML = computationBuffer;
     }
 }
 
@@ -32,7 +38,6 @@ function input(value) {
         displayBuffer += value;
     }
     updateDisplay();
-    console.log(typeof displayBuffer);
 }
 
 function clearFunc(flag) {
@@ -51,13 +56,12 @@ function erase(){
 
 function compute(){
     computationBuffer += displayBuffer; // Add last number to string
-
+    var compString = computationBuffer; // Store computation string
     // Split the string using the whitespace surrounding each operand,
     // this generates a list of numbers and operands of this form:
     //      12.5, x, 5, +, 9, /, 6, * 4, -, 10, *, 9, /, 2
     // this list becomes the new computation buffer
     computationBuffer = computationBuffer.split(" ");
-    console.log(computationBuffer);
     // If the last entry in the list is an operand, it gets omitted
     if (isNaN(computationBuffer[computationBuffer.length-1])){
         computationBuffer = computationBuffer.slice(0,-1);
@@ -67,8 +71,8 @@ function compute(){
     for (var operand of OPERANDS) {
         computationBuffer = parseBuffer(computationBuffer,operand);
     }
-    
-    updateDisplay(result);
+
+    updateDisplay(result, compString);
     displayBuffer = "";
     computationBuffer = "";
 }
@@ -94,7 +98,7 @@ function parseBuffer(buffer, operand){
 function operate(left,operand,right){
     switch (operand) {
         case "/":
-            return (parseFloat(left) / parseFloat(right)).toString();
+            return (Math.round((parseFloat(left) / parseFloat(right)*100000))/100000).toString();
         case "x":
             return (parseFloat(left) * parseFloat(right)).toString();
         case "+":
