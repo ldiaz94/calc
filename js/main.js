@@ -107,3 +107,21 @@ function operate(left,operand,right){
             return (parseFloat(left) - parseFloat(right)).toString();
     }
 }
+
+function keypress(event){
+    if (!(isNaN(event.key))){
+        input(event.key);
+    } else if (OPERANDS.includes(event.key)){
+        input(event.key);
+    } else if (event.key === "*"){
+        input("x");
+    }
+     else if (event.key === "Enter"){
+        compute();
+    } else if (event.key === "c"){
+        displayBuffer = "";
+        computationBuffer = "";
+        result = "";
+        updateDisplay();
+    }
+}
