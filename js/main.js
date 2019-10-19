@@ -66,7 +66,6 @@ function compute(){
     if (isNaN(computationBuffer[computationBuffer.length-1])){
         computationBuffer = computationBuffer.slice(0,-1);
     }
-    console.log(computationBuffer);
     
     for (var operand of OPERANDS) {
         computationBuffer = parseBuffer(computationBuffer,operand);
